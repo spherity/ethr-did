@@ -768,7 +768,6 @@ describe('EthrDID', () => {
 
 describe('EthrDID (Meta Transactions)', () => {
   let ethrDid: EthrDID,
-    plainDid: EthrDID,
     walletSigner: EthrDID,
     registry: string,
     registryContract: Contract,
@@ -910,7 +909,6 @@ describe('EthrDID (Meta Transactions)', () => {
     const hash = await ethrDid.createChangeOwnerHash(nextOwner)
     const signature = new SigningKey(currentOwnerPrivateKey).signDigest(hash)
 
-    // Other identity does the on-chain tx for the current owner to change ownership
     await walletSigner.changeOwnerSigned(nextOwner, {
       sigV: signature.v,
       sigR: signature.r,
